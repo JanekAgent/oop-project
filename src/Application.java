@@ -37,8 +37,8 @@ public class Application{
         //Load users
         // CreateFile ufile = new CreateFile("users.txt");
         // ufile.Create();
-        // ReadFile userReadFile = new ReadFile("users.txt");
-        // ArrayList<Copy> users=userReadFile.loadUsers(library);
+        //ReadFile userReadFile = new ReadFile("users.txt");
+        //ArrayList<Copy> users=userReadFile.loadUsers(library);
         //Interact with library man
         System.out.println("Loaded, start using");
         while (2>1){
@@ -72,7 +72,7 @@ public class Application{
             if (inputed.equals("Lent copy")){
                 System.out.print("Copy ID:");
                 int id =input.nextInt();  
-                copies.get(id).Lent();
+                copies.get(id).Lent(copies);
             }
             if (inputed.equals("Return copy")){
                 System.out.print("Copy ID:");

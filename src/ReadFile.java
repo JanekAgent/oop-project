@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.io.File;  
 import java.io.FileNotFoundException;  
-import java.util.Scanner; 
+import java.util.Scanner;
+
+import javax.print.attribute.standard.Copies; 
 
 public class ReadFile {
     String fileName;
@@ -73,6 +75,14 @@ public class ReadFile {
     ReadFile(String fileNamel){
         this.fileName=fileNamel;
         
+    }
+    
+    void reloadFile(ArrayList<Copy> copies){
+     WriteFile wf =   new WriteFile("copies.txt", false);
+     wf.Write("");
+     for (Copy i : copies){
+      i.writeDataToFile();
+     }
     }
     
   

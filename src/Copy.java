@@ -61,20 +61,23 @@ public class Copy {
         Copy newCopy = new Copy(this.book,id);
         return newCopy;
     }
-    void Lent(){
+    void Lent(ArrayList<Copy> copies){
         if (alive){
-            if (lented=false){
-                Scanner input = new Scanner(System.in); 
-                System.out.print("Id of reader: ");
-                this.userID = input.nextInt();
-                lented=true;
+            if (lented){
+                System.out.println("It's arleady lented");
+                
 
                 
 
             
             }
             else{
-                System.out.println("It's arleady lented");
+                Scanner input = new Scanner(System.in); 
+                System.out.print("Id of reader: ");
+                this.userID = input.nextInt();
+                lented=true;
+                ReadFile rf = new ReadFile("copies.txt");
+                rf.reloadFile(copies);
             }
         }else {
             System.out.println("It's destroyed and not avalible to lent");
@@ -133,6 +136,8 @@ public class Copy {
     void printInformation(ArrayList<book> books){
         System.out.print("Copy ID:");
         System.out.println(id);
+        System.out.print("Lented: ");
+        System.out.println(Boolean.toString(lented));
         System.out.print("Book information:");
         IdSearch search = new IdSearch(bookID);
         this.book=search.book(books);
