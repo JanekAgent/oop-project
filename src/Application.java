@@ -42,8 +42,8 @@ public class Application{
         //Interact with library man
         System.out.println("Loaded, start using");
         while (2>1){
-            String inputed= input.nextLine(); 
             System.out.print(">");
+            String inputed= input.nextLine(); 
             //System.out.println(inputed);
             if (inputed.equals("Add book")){
                 System.out.println("Adding book");
