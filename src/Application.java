@@ -16,19 +16,7 @@ public class Application{
         System.out.println("Start");
         System.out.println("Start loading");
         Scanner input = new Scanner(System.in); 
-        
-        
-        
-            
-        
-        Library library = new Library("library.txt");
-        
-
-
-
-        
-
-       
+        Library library = new Library("library.txt");       
         //Load books
 
         CreateFile file = new CreateFile("books.txt");
@@ -64,7 +52,7 @@ public class Application{
                 System.out.println("Adding user");
                 books.add(new book(library,books.size()));
                 books.get(books.size()-1).writeDataToFile();
-                System.out.println("Book suer");
+                System.out.println("Book user");
             }
             if (inputed.equals("Add copy")){
                 System.out.print("Number of copies: ");
