@@ -6,7 +6,7 @@ public class book {
     int year;
     int edition;
     int authorID;
-    Author author;
+    String author;
     String data;
     public
     book(Library libraryl,String titlel,int yearl,int editionl,int authorl){

@@ -93,6 +93,11 @@ public class Application{
                 int id = input.nextInt();
                 books.get(id).printInformation();
             }
+            if (inputed.equals("Name copy")){
+                System.out.print("Id: ");               
+                int id = input.nextInt();
+                copies.get(id).printInformation(books);
+            }
             if (inputed.equals("Name user")){
                 System.out.print("Id: ");               
                 int id = input.nextInt();
