@@ -38,6 +38,7 @@ public class book {
         System.out.print("AuthorID: ");
         this.authorID = input.nextInt();
         library.newBook();
+        input.close();
     }
     void writeDataToFile(){
         String f="books.txt";

@@ -1,5 +1,5 @@
+import java.util.ArrayList; 
 
-import java.lang.reflect.Array;
 
 public class User {
     int id;
@@ -9,7 +9,9 @@ public class User {
     Date bornDate;
     String adress;
     String email;
-    Array borrowedBooks;
-
+    ArrayList<book> borrowedBooks;
+    User(ArrayList<User> usersl){
+        System.out.println("Adding user");
+    }
 
 }

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;  
 import java.util.Scanner;
 
-import javax.print.attribute.standard.Copies; 
+
 
 public class ReadFile {
     String fileName;
