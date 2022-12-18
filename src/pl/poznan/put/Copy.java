@@ -1,4 +1,4 @@
-
+package pl.poznan.put;
 import java.util.ArrayList;
 import java.util.Scanner;
  
@@ -19,7 +19,7 @@ public class Copy {
     String comment;
     
     
-    Copy(Library libraryl,ArrayList<Copy> copiesl,ArrayList<book> books){
+    public Copy(Library libraryl,ArrayList<Copy> copiesl,ArrayList<book> books){
         Scanner input = new Scanner(System.in); 
         
         System.out.print("Book id: ");
@@ -36,7 +36,7 @@ public class Copy {
         input.close();
         
     }
-    Copy(int bookIDl,int idl,boolean alivel,Date dayOfAddedl,Date dayOfDeathl,boolean lentedl,int userIDl,Date dateOfLentl,String commentl){
+    public Copy(int bookIDl,int idl,boolean alivel,Date dayOfAddedl,Date dayOfDeathl,boolean lentedl,int userIDl,Date dateOfLentl,String commentl){
         this.bookID= bookIDl;
         this.id= idl;
         this.alive=alivel;
@@ -47,7 +47,7 @@ public class Copy {
         this.dateOfLent=dateOfLentl;
         this.comment=commentl;
     }
-    Copy(book book,int id){       
+    public Copy(book book,int id){       
         
         this.bookID= book.id;
         this.id=id;
@@ -58,11 +58,11 @@ public class Copy {
         this.dayOfAdded=currentDate.actualDate();
         writeDataToFile();
     }
-    Copy CopyOfCopy(int id){
+    public Copy CopyOfCopy(int id){
         Copy newCopy = new Copy(this.book,id);
         return newCopy;
     }
-    void Lent(ArrayList<Copy> copies){
+    public void Lent(ArrayList<Copy> copies){
         if (alive){
             if (lented){
                 System.out.println("It's arleady lented");
@@ -86,7 +86,7 @@ public class Copy {
         }
     
     }
-    void returnCopy(){
+    public void returnCopy(){
         if (alive){
             if (lented=true){
                 Scanner input = new Scanner(System.in); 
@@ -136,7 +136,7 @@ public class Copy {
         return data;
         
     }
-    void printInformation(ArrayList<book> books){
+    public void printInformation(ArrayList<book> books){
         System.out.print("Copy ID:");
         System.out.println(id);
         System.out.print("Lented: ");

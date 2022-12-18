@@ -1,3 +1,5 @@
+package pl.poznan.put;
+
 
 public class Library {
     int maxid;   
@@ -9,7 +11,7 @@ public class Library {
         file.Write(Integer.toString(maxid));
         
     }
-    Library(String fileNamel){
+    public Library(String fileNamel){
         fileName=fileNamel;
         CreateFile file = new CreateFile(fileName);
         file.Create();

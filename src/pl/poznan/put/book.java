@@ -1,15 +1,16 @@
+package pl.poznan.put;
 import java.util.Scanner;
 public class book {
     Library library;
-    String title;
+    public String title;
     int id;
     int year;
     int edition;
     int authorID;
     String author;
     String data;
-    public
-    book(Library libraryl,String titlel,int yearl,int editionl,int authorl){
+    
+    public book(Library libraryl,String titlel,int yearl,int editionl,int authorl){
         this.library=libraryl;
         this.title=titlel;
         this.year=yearl;
@@ -17,7 +18,7 @@ public class book {
         this.authorID=authorl;
         this.id =library.maxid;
     }
-    book(int idl,Library libraryl,String titlel,int yearl,int editionl,int authorl){
+    public book(int idl,Library libraryl,String titlel,int yearl,int editionl,int authorl){
         this.library=libraryl;
         this.title=titlel;
         this.year=yearl;
@@ -25,7 +26,7 @@ public class book {
         this.authorID=authorl;
         this.id =idl;
     }
-    book(Library libraryl,int idl){
+    public book(Library libraryl,int idl){
         this.id=idl;
         this.library=libraryl;
         Scanner input = new Scanner(System.in); 
@@ -40,13 +41,13 @@ public class book {
         library.newBook();
         input.close();
     }
-    void writeDataToFile(){
+    public void writeDataToFile(){
         String f="books.txt";
         WriteFile file= new WriteFile(f,true);
         
         file.Write(dataForFile());
     }
-    void printInformation(){
+    public  void printInformation(){
         System.out.println("Book: "+title);
         System.out.println("Id: "+Integer.toString(id));  
         System.out.println("Year: "+Integer.toString(year));

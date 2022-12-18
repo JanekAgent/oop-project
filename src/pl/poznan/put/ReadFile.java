@@ -1,4 +1,4 @@
-
+package pl.poznan.put;
 import java.util.ArrayList;
 import java.io.File;  
 import java.io.FileNotFoundException;  
@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class ReadFile {
     String fileName;
-    ArrayList<book> loadBooks(Library library){
+    public ArrayList<book> loadBooks(Library library){
         ArrayList<book> arr = new ArrayList<>();
         try {
             File myObj = new File(fileName);
@@ -32,7 +32,7 @@ public class ReadFile {
 
         return arr;
     }
-    ArrayList<Copy> loadCopies(Library library){
+    public ArrayList<Copy> loadCopies(Library library){
       ArrayList<Copy> arr = new ArrayList<>();
       try {
           File myObj = new File(fileName);
@@ -60,7 +60,7 @@ public class ReadFile {
 
       return arr;
   }
-  ArrayList<User> loadUsers(Library library){
+  public ArrayList<User> loadUsers(Library library){
     ArrayList<User> arr = new ArrayList<>();
     try {
         File myObj = new File(fileName);
@@ -98,12 +98,12 @@ public class ReadFile {
     }
       return data;
     }
-    ReadFile(String fileNamel){
+    public ReadFile(String fileNamel){
         this.fileName=fileNamel;
         
     }
     
-    void reloadFile(ArrayList<Copy> copies){
+    public void reloadFile(ArrayList<Copy> copies){
      WriteFile wf =   new WriteFile("copies.txt", false);
      wf.Write("");
      for (Copy i : copies){

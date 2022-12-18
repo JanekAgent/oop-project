@@ -1,10 +1,12 @@
+package pl.poznan.put;
+
 
 import java.io.File;  // Import the File class
 import java.io.IOException;  // Import the IOException class to handle errors
 
 public class CreateFile {
     String fileName;
-    void Create(){
+    public  void Create(){
     try {
       File myObj = new File(fileName);
       if (myObj.createNewFile()) {
@@ -16,7 +18,7 @@ public class CreateFile {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }}
-    CreateFile(String fileNamel){
+    public CreateFile(String fileNamel){
         this.fileName=fileNamel;
     }
   }

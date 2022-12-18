@@ -1,7 +1,15 @@
-import java.util.ArrayList; 
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
+import pl.poznan.put.Copy;
+import pl.poznan.put.CreateFile;
+import pl.poznan.put.Library;
+import pl.poznan.put.ReadFile;
+
+import pl.poznan.put.User;
+import pl.poznan.put.book;
 
 public class Application{
     public static void main(String[] args){
@@ -9,21 +17,18 @@ public class Application{
         System.out.println("Start loading");
         Scanner input = new Scanner(System.in); 
         
-        //book[] books={};
-        //ArrayList<User> users = new ArrayList<>();
-        ArrayList<Author> authors = new ArrayList<>();
-        Author testAuthor = new Author();
+        
+        
             
-        //Load rules
-        ;
+        
         Library library = new Library("library.txt");
-        Rules rules = new Rules();
+        
 
 
 
         
 
-        //load authors
+       
         //Load books
 
         CreateFile file = new CreateFile("books.txt");
@@ -107,7 +112,7 @@ public class Application{
                 System.out.print("Surname: ");               
                 String surname = input.nextLine();
                 for (User i : users){
-                if (i.surname==surname){
+                if (i.surname()==surname){
                     i.printInformation();
                 }
             }}
