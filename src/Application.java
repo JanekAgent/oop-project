@@ -1,11 +1,6 @@
 import java.util.ArrayList; 
 import java.util.Scanner;
-import java.time.format.DateTimeFormatter;  
-import java.time.LocalDateTime;
-import java.time.Year; 
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files  
+
 public class Application{
     public static void main(String[] args){
         System.out.println("Start");
@@ -13,7 +8,7 @@ public class Application{
         Scanner input = new Scanner(System.in); 
         
         //book[] books={};
-        ArrayList<User> users = new ArrayList<>();
+        //ArrayList<User> users = new ArrayList<>();
         ArrayList<Author> authors = new ArrayList<>();
         Author testAuthor = new Author();
             
@@ -38,8 +33,12 @@ public class Application{
         copiesFile.Create();
         ReadFile copiesFileRead = new ReadFile("copies.txt");
         ArrayList<Copy> copies=copiesFileRead.loadCopies(library);
-        //Load users
 
+        //Load users
+        // CreateFile ufile = new CreateFile("users.txt");
+        // ufile.Create();
+        // ReadFile userReadFile = new ReadFile("users.txt");
+        // ArrayList<Copy> users=userReadFile.loadUsers(library);
         //Interact with library man
         System.out.println("Loaded, start using");
         while (2>1){
@@ -48,7 +47,7 @@ public class Application{
             if (inputed.equals("Add book")){
                 System.out.println("Adding book");
                 System.out.println(library.lastBook());
-                books.add(new book(library));
+                books.add(new book(library,books.size()));
                 System.out.println(library.lastBook());
                 books.get(books.size()-1).writeDataToFile();
                 System.out.println("Book added");
@@ -56,37 +55,55 @@ public class Application{
             if (inputed.equals("Add copy")){
                 System.out.print("Number of copies: ");
                 int numberOfCopies = input.nextInt();
-                Copy firstCopy = new Copy(library, copies);
+                Copy firstCopy = new Copy(library, copies,books);
                 copies.add(firstCopy);
                 for (int i=0;i<numberOfCopies;i++){
                     copies.add(firstCopy.CopyOfCopy(copies.size()));
 
                 }
+                System.out.println("Copies added");
             }
 
 
             if (inputed.equals("Add Author")){
                 System.out.println("Adding Author");
             }
-            if (inputed.equals("Lent")){
-                System.out.println("Adding book");
+            if (inputed.equals("Lent copy")){
+                System.out.print("Copy ID:");
+                int id =input.nextInt();  
+                copies.get(id).Lent();
+            }
+            if (inputed.equals("Return copy")){
+                System.out.print("Copy ID:");
+
+
             }
             if (inputed.equals("Search book")){
                 System.out.print("Id: ");               
                 int id = input.nextInt();
-                books.get(id).printImformation();
+                books.get(id).printInformation();
             }
-
+            
             if (inputed.equals("Exit")){
                 break;
             }
             if (inputed.equals("All books")){
                 for (book i : books){
-                    i.printImformation();
+                    System.out.println("-----------------------------"); 
+                    i.printInformation();
 
                 }
             }
+            if (inputed.equals("All copies")){
+                for (Copy i : copies){
+                    System.out.println("-----------------------------"); 
+                    i.printInformation(books);
+
+                }
+            }
+            
         }
+        input.close();
         System.out.println("Goodbye");
 
     }

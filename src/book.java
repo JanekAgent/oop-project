@@ -25,7 +25,8 @@ public class book {
         this.authorID=authorl;
         this.id =idl;
     }
-    book(Library libraryl){
+    book(Library libraryl,int idl){
+        this.id=idl;
         this.library=libraryl;
         Scanner input = new Scanner(System.in); 
         System.out.print("Title: ");
@@ -44,12 +45,12 @@ public class book {
         
         file.Write(dataForFile());
     }
-    void printImformation(){
+    void printInformation(){
         System.out.println("Book: "+title);
         System.out.println("Id: "+Integer.toString(id));  
-        System.out.print("Year: "+Integer.toString(year));
-        System.out.print("Edition: "+Integer.toString(edition));
-        System.out.print("Author ID: "+Integer.toString(authorID));
+        System.out.println("Year: "+Integer.toString(year));
+        System.out.println("Edition: "+Integer.toString(edition));
+        System.out.println("Author ID: "+Integer.toString(authorID));
     }
     String dataForFile(){
         data="";

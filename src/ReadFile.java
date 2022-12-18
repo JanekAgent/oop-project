@@ -42,7 +42,8 @@ public class ReadFile {
             
             boolean alivel=Boolean.valueOf(copyData[2]);
             Date dayOfAddedl = new Date(copyData[3]);
-            Date dayOfDeathl = new Date(copyData[4]);boolean lentedl=Boolean.valueOf(copyData[5]);
+            Date dayOfDeathl = new Date(copyData[4]);
+            boolean lentedl=Boolean.valueOf(copyData[5]);
             int userIDl =Integer.valueOf(copyData[6]);            
             Date dateOfLentl =new Date(copyData[7]);
             String commentl =copyData[8];

@@ -17,19 +17,22 @@ public class Copy {
     Date dateOfLent;
     String comment;
     
-    void Copy(){
-        
-    }
-    Copy(Library libraryl,ArrayList<Copy> copiesl){
+    
+    Copy(Library libraryl,ArrayList<Copy> copiesl,ArrayList<book> books){
         Scanner input = new Scanner(System.in); 
         
         System.out.print("Book id: ");
         this.bookID= input.nextInt();
-        
+        IdSearch serch = new IdSearch(bookID);
+        this.book=serch.book(books);
         this.id= copiesl.size()+1;
         this.alive=true;
+        this.dayOfDeath=new Date("0000/00/00");
+        this.dateOfLent=new Date("0000/00/00");
         CurrentDate currentDate = new CurrentDate();
         this.dayOfAdded=currentDate.actualDate();
+        writeDataToFile();
+        
         
     }
     Copy(int bookIDl,int idl,boolean alivel,Date dayOfAddedl,Date dayOfDeathl,boolean lentedl,int userIDl,Date dateOfLentl,String commentl){
@@ -43,15 +46,16 @@ public class Copy {
         this.dateOfLent=dateOfLentl;
         this.comment=commentl;
     }
-    Copy(book book,int id){
-        
-        
+    Copy(book book,int id){       
         
         this.bookID= book.id;
         this.id=id;
         this.alive=true;
+        this.dayOfDeath=new Date("0000/00/00");
+        this.dateOfLent=new Date("0000/00/00");
         CurrentDate currentDate = new CurrentDate();
         this.dayOfAdded=currentDate.actualDate();
+        writeDataToFile();
     }
     Copy CopyOfCopy(int id){
         Copy newCopy = new Copy(this.book,id);
@@ -64,6 +68,7 @@ public class Copy {
                 System.out.print("Id of reader: ");
                 this.userID = input.nextInt();
                 lented=true;
+
                 
 
             
@@ -76,7 +81,31 @@ public class Copy {
         }
     
     }
+    void returnCopy(){
+        if (alive){
+            if (lented=true){
+                Scanner input = new Scanner(System.in); 
+                
+                this.userID = 0;
+                lented=false;
+                System.out.print("Copy returned ");
+                
 
+            
+            }
+            else{
+                System.out.println("It's arleady lented");
+            }
+        }else {
+            System.out.println("It's destroyed and not avalible to lent");
+        }
+    }
+    void writeDataToFile(){
+        String f="copies.txt";
+        WriteFile file= new WriteFile(f,true);
+        
+        file.Write(dataForFile());
+    }
     String dataForFile(){
         String data;
         data="";
@@ -89,6 +118,7 @@ public class Copy {
         data+=dayOfAdded.dateToString();
         data+=";";
         data+=dayOfDeath.dateToString();
+        data+=";";
         data+=Boolean.toString(lented);
         data+=";";
         data+=Integer.toString(userID);
@@ -100,4 +130,16 @@ public class Copy {
         return data;
         
     }
+    void printInformation(ArrayList<book> books){
+        System.out.print("Copy ID:");
+        System.out.println(id);
+        System.out.print("Book information:");
+        IdSearch search = new IdSearch(bookID);
+        this.book=search.book(books);
+        book.printInformation();
+
+        
+    }
+    
+   
     }
