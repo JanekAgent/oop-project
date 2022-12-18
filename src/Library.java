@@ -12,7 +12,7 @@ public class Library {
         fileName=fileNamel;
         CreateFile file = new CreateFile(fileName);
         file.Create();
-        this.file = new WriteFile(fileName);
+        this.file = new WriteFile(fileName,false);
         this.readFile = new ReadFile(fileName); 
         maxid=Integer.valueOf(readFile.loadLine());
     }

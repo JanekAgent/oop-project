@@ -5,9 +5,10 @@ import java.io.IOException;
 public class WriteFile {
     String fileName;
     String text;
+    Boolean append;
     void Write(String text){
     try {
-        FileWriter myWriter = new FileWriter(fileName);
+        FileWriter myWriter = new FileWriter(fileName,append);
         myWriter.write(text);
         myWriter.close();
         System.out.println("Successfully wrote to the file.");
@@ -16,7 +17,8 @@ public class WriteFile {
         e.printStackTrace();
       }
     }
-    WriteFile(String fileName){
+    WriteFile(String fileName,Boolean appendl){
         this.fileName=fileName;
+        this.append=appendl;
     }
   }

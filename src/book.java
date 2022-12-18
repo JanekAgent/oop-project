@@ -40,7 +40,7 @@ public class book {
     }
     void writeDataToFile(){
         String f="books.txt";
-        WriteFile file= new WriteFile(f);
+        WriteFile file= new WriteFile(f,true);
         file.Write(dataForFile());
     }
     void printImformation(){
@@ -59,6 +59,7 @@ public class book {
         data+=Integer.toString(edition);
         data+=";";
         data+=Integer.toString(authorID);
+        data+="\n";
         return data;
         
     }
