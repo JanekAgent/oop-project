@@ -37,23 +37,29 @@ public class Application{
         ArrayList<Copy> copies=copiesFileRead.loadCopies(library);
 
         //Load users
-        // CreateFile ufile = new CreateFile("users.txt");
-        // ufile.Create();
-        //ReadFile userReadFile = new ReadFile("users.txt");
-        //ArrayList<Copy> users=userReadFile.loadUsers(library);
+        CreateFile ufile = new CreateFile("users.txt");
+        ufile.Create();
+        ReadFile userReadFile = new ReadFile("users.txt");
+        ArrayList<User> users=userReadFile.loadUsers(library);
         //Interact with library man
         System.out.println("Loaded, start using");
         while (2>1){
             System.out.print(">");
             String inputed= input.nextLine(); 
-            //System.out.println(inputed);
+
             if (inputed.equals("Add book")){
                 System.out.println("Adding book");
-                System.out.println(library.lastBook());
+
                 books.add(new book(library,books.size()));
-                System.out.println(library.lastBook());
+
                 books.get(books.size()-1).writeDataToFile();
                 System.out.println("Book added");
+            }
+            if (inputed.equals("Add user")){
+                System.out.println("Adding user");
+                books.add(new book(library,books.size()));
+                books.get(books.size()-1).writeDataToFile();
+                System.out.println("Book suer");
             }
             if (inputed.equals("Add copy")){
                 System.out.print("Number of copies: ");
@@ -82,12 +88,16 @@ public class Application{
                 copies.get(id).returnCopy();
 
             }
-            if (inputed.equals("Search book")){
+            if (inputed.equals("Name book")){
                 System.out.print("Id: ");               
                 int id = input.nextInt();
                 books.get(id).printInformation();
             }
-            
+            if (inputed.equals("Name book")){
+                System.out.print("Id: ");               
+                int id = input.nextInt();
+                users.get(id).printInformation();
+            }
             if (inputed.equals("Exit")){
                 break;
             }

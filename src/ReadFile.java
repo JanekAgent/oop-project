@@ -60,6 +60,31 @@ public class ReadFile {
 
       return arr;
   }
+  ArrayList<User> loadUsers(Library library){
+    ArrayList<User> arr = new ArrayList<>();
+    try {
+        File myObj = new File(fileName);
+        Scanner myReader = new Scanner(myObj);
+        while (myReader.hasNextLine()) {
+          String data = myReader.nextLine();
+          String[] userData = data.split(";");
+          int idl=Integer.valueOf(userData[0]);
+          String namel=userData[1];
+          String surnamel = userData[2];
+          Date datel = new Date(userData[3]);
+          String adress =userData[3];
+          String email = userData[4];         
+          
+          arr.add(new User(idl, namel, surnamel, datel, adress, email));
+        }  
+        myReader.close();
+      } catch (FileNotFoundException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+      }
+
+    return arr;
+}
     String loadLine(){
       String data="";
       try {
