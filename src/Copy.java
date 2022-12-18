@@ -4,7 +4,7 @@ import java.util.Scanner;
  
 public class Copy {
     book book;
-    int bookID;
+    public int bookID;
     int id;
 
     boolean alive;

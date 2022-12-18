@@ -93,16 +93,50 @@ public class Application{
                 int id = input.nextInt();
                 books.get(id).printInformation();
             }
-            if (inputed.equals("Name book")){
+            if (inputed.equals("Name user")){
                 System.out.print("Id: ");               
                 int id = input.nextInt();
                 users.get(id).printInformation();
+            }
+            if (inputed.equals("Search user")){
+                System.out.print("Surname: ");               
+                String surname = input.nextLine();
+                for (User i : users){
+                if (i.surname==surname){
+                    i.printInformation();
+                }
+            }}
+            if (inputed.equals("Search book")){
+                System.out.print("Surname: ");               
+                String name = input.nextLine();
+                for (book i : books){
+                if (i.title==name){
+                    i.printInformation();
+                }
+
+            }}
+            if (inputed.equals("List copies")){
+                System.out.print("BookID: ");               
+                int id = input.nextInt();
+                for (Copy i : copies){
+                if (i.bookID==id){
+                    i.printInformation(books);
+                }
+
+            }
+
             }
             if (inputed.equals("Exit")){
                 break;
             }
             if (inputed.equals("All books")){
                 for (book i : books){
+                    System.out.println("-----------------------------"); 
+                    i.printInformation();
+                }
+            }
+            if (inputed.equals("All users")){
+                for (User i : users){
                     System.out.println("-----------------------------"); 
                     i.printInformation();
 
