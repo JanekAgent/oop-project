@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;
-import java.time.Year;   
+import java.time.Year; 
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files  
 public class Application{
     public static void main(String[] args){
         System.out.println("Start");
@@ -19,12 +22,14 @@ public class Application{
         Rules rules = new Rules();
 
 
+
         //Load date
         // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         // LocalDateTime now = LocalDateTime.now();  
         // Date currentDate = new Date();
         //Load data
         //Load books
+
         //Load users
         //Interact with user
         System.out.println("Loaded, start using");
@@ -54,9 +59,9 @@ public class Application{
                 System.out.print("Author: ");
                 
 
-
-                books.add( new book(library, title, yearl, editionl, testAuthor));
-                System.out.println("Bookadded");
+                library.newBook();
+                books.add( new book(library, title, yearl, editionl, editionl));
+                System.out.println("Book added");
             }
 
             if (inputed.equals("Add Author")){
@@ -65,10 +70,23 @@ public class Application{
             if (inputed.equals("Lent")){
                 System.out.println("Adding book");
             }
+            if (inputed.equals("Search book")){
+                System.out.print("Id: ");               
+                int id = input.nextInt();
+                books.get(id).printImformation();
+            }
+
             if (inputed.equals("Exit")){
                 break;
             }
+            if (inputed.equals("All books")){
+                for (book i : books){
+                    i.printImformation();
+
+                }
+            }
         }
         System.out.println("Goodbye");
+
     }
 }
