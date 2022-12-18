@@ -24,11 +24,7 @@ public class Application{
 
 
 
-        //Load date
-        // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-        // LocalDateTime now = LocalDateTime.now();  
-        // Date currentDate = new Date();
-
+        
 
         //load authors
         //Load books
@@ -38,8 +34,13 @@ public class Application{
         ReadFile booksFile = new ReadFile("books.txt");
         ArrayList<book> books=booksFile.loadBooks(library);
         //load copies
+        CreateFile copiesFile = new CreateFile("copies.txt");
+        copiesFile.Create();
+        ReadFile copiesFileRead = new ReadFile("copies.txt");
+        ArrayList<Copy> copies=copiesFileRead.loadCopies(library);
         //Load users
-        //Interact with user
+
+        //Interact with library man
         System.out.println("Loaded, start using");
         while (2>1){
             String inputed= input.nextLine(); 
@@ -52,6 +53,17 @@ public class Application{
                 books.get(books.size()-1).writeDataToFile();
                 System.out.println("Book added");
             }
+            if (inputed.equals("Add copy")){
+                System.out.print("Number of copies: ");
+                int numberOfCopies = input.nextInt();
+                Copy firstCopy = new Copy(library, copies);
+                copies.add(firstCopy);
+                for (int i=0;i<numberOfCopies;i++){
+                    copies.add(firstCopy.CopyOfCopy(copies.size()));
+
+                }
+            }
+
 
             if (inputed.equals("Add Author")){
                 System.out.println("Adding Author");

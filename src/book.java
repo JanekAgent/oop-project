@@ -41,12 +41,15 @@ public class book {
     void writeDataToFile(){
         String f="books.txt";
         WriteFile file= new WriteFile(f,true);
+        
         file.Write(dataForFile());
     }
     void printImformation(){
         System.out.println("Book: "+title);
-                
-        System.out.print("Title: ");
+        System.out.println("Id: "+Integer.toString(id));  
+        System.out.print("Year: "+Integer.toString(year));
+        System.out.print("Edition: "+Integer.toString(edition));
+        System.out.print("Author ID: "+Integer.toString(authorID));
     }
     String dataForFile(){
         data="";

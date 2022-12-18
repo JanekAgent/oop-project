@@ -29,6 +29,33 @@ public class ReadFile {
 
         return arr;
     }
+    ArrayList<Copy> loadCopies(Library library){
+      ArrayList<Copy> arr = new ArrayList<>();
+      try {
+          File myObj = new File(fileName);
+          Scanner myReader = new Scanner(myObj);
+          while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();
+            String[] copyData = data.split(";");
+            int idl=Integer.valueOf(copyData[0]);
+            int bookIDl=Integer.valueOf(copyData[1]);            
+            
+            boolean alivel=Boolean.valueOf(copyData[2]);
+            Date dayOfAddedl = new Date(copyData[3]);
+            Date dayOfDeathl = new Date(copyData[4]);boolean lentedl=Boolean.valueOf(copyData[5]);
+            int userIDl =Integer.valueOf(copyData[6]);            
+            Date dateOfLentl =new Date(copyData[7]);
+            String commentl =copyData[8];
+            arr.add(new Copy(bookIDl,idl, alivel, dayOfAddedl, dayOfDeathl, lentedl,userIDl, dateOfLentl, commentl));
+          }  
+          myReader.close();
+        } catch (FileNotFoundException e) {
+          System.out.println("An error occurred.");
+          e.printStackTrace();
+        }
+
+      return arr;
+  }
     String loadLine(){
       String data="";
       try {
@@ -46,6 +73,7 @@ public class ReadFile {
         this.fileName=fileNamel;
         
     }
+    
   
   }
 
