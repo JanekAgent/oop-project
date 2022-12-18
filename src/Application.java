@@ -1,6 +1,8 @@
 import java.util.ArrayList; 
 import java.util.Scanner;
 
+
+
 public class Application{
     public static void main(String[] args){
         System.out.println("Start");
@@ -76,7 +78,8 @@ public class Application{
             }
             if (inputed.equals("Return copy")){
                 System.out.print("Copy ID:");
-
+                int id =input.nextInt();  
+                copies.get(id).returnCopy();
 
             }
             if (inputed.equals("Search book")){

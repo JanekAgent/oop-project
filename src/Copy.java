@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
  
@@ -32,7 +33,7 @@ public class Copy {
         CurrentDate currentDate = new CurrentDate();
         this.dayOfAdded=currentDate.actualDate();
         writeDataToFile();
-        
+        input.close();
         
     }
     Copy(int bookIDl,int idl,boolean alivel,Date dayOfAddedl,Date dayOfDeathl,boolean lentedl,int userIDl,Date dateOfLentl,String commentl){
@@ -78,6 +79,7 @@ public class Copy {
                 lented=true;
                 ReadFile rf = new ReadFile("copies.txt");
                 rf.reloadFile(copies);
+                input.close();
             }
         }else {
             System.out.println("It's destroyed and not avalible to lent");
@@ -91,7 +93,8 @@ public class Copy {
                 
                 this.userID = 0;
                 lented=false;
-                System.out.print("Copy returned ");
+                System.out.println("Copy returned");
+                input.close();
                 
 
             
