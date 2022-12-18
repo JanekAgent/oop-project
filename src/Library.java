@@ -1,4 +1,9 @@
 public class Library {
-    int maxid;
-    
+    int maxid;    
+    void newBook(){
+        maxid=maxid+1;
+    }
+    Library(){
+
+    }
 }
