@@ -11,14 +11,15 @@ public class Application{
         System.out.println("Start");
         System.out.println("Start loading");
         Scanner input = new Scanner(System.in); 
-        ArrayList<book> books = new ArrayList<>();
+        
         //book[] books={};
         ArrayList<User> users = new ArrayList<>();
         ArrayList<Author> authors = new ArrayList<>();
         Author testAuthor = new Author();
             
         //Load rules
-        Library library = new Library();
+        ;
+        Library library = new Library("library.txt");
         Rules rules = new Rules();
 
 
@@ -27,9 +28,16 @@ public class Application{
         // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         // LocalDateTime now = LocalDateTime.now();  
         // Date currentDate = new Date();
-        //Load data
+
+
+        //load authors
         //Load books
 
+        CreateFile file = new CreateFile("books.txt");
+        file.Create();
+        ReadFile booksFile = new ReadFile("books.txt");
+        ArrayList<book> books=booksFile.loadBooks(library);
+        //load copies
         //Load users
         //Interact with user
         System.out.println("Loaded, start using");
@@ -37,30 +45,11 @@ public class Application{
             String inputed= input.nextLine(); 
             //System.out.println(inputed);
             if (inputed.equals("Add book")){
-                //int yearl=0;
-                //int editionl=0;
                 System.out.println("Adding book");
-                
-                System.out.print("Title: ");
-                String title= input.nextLine();
-                System.out.print("Year: ");
-                
-                
-                int yearl = input.nextInt();
-                System.out.print(yearl);
-                
-
-                System.out.print("Editon: ");
-
-                
-                int editionl = 123;
-                
-
-                System.out.print("Author: ");
-                
-
-                library.newBook();
-                books.add( new book(library, title, yearl, editionl, editionl));
+                System.out.println(library.lastBook());
+                books.add(new book(library));
+                System.out.println(library.lastBook());
+                books.get(books.size()-1).writeDataToFile();
                 System.out.println("Book added");
             }
 

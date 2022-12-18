@@ -14,10 +14,12 @@ public class ReadFile {
               String data = myReader.nextLine();
               String[] bookData = data.split(";");
               int idl=Integer.valueOf(bookData[0]);
-              int yearl=Integer.valueOf(bookData[3]);
-              int editionl=Integer.valueOf(bookData[4]);
-              int authorID=Integer.valueOf(bookData[5]);
-              arr.add(new book(idl, library, data, yearl, editionl, authorID));
+              String titlel = bookData[1];
+              int yearl=Integer.valueOf(bookData[2]);
+              int editionl=Integer.valueOf(bookData[3]);
+              System.out.println(bookData[4]);
+              int authorID=Integer.valueOf(bookData[4]);
+              arr.add(new book(idl, library,titlel , yearl, editionl, authorID));
             }
             myReader.close();
           } catch (FileNotFoundException e) {
@@ -27,7 +29,19 @@ public class ReadFile {
 
         return arr;
     }
-
+    String loadLine(){
+      String data="";
+      try {
+      File myObj = new File(fileName);
+      Scanner myReader = new Scanner(myObj);
+      data = myReader.nextLine();
+      myReader.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+      return data;
+    }
     ReadFile(String fileNamel){
         this.fileName=fileNamel;
         
